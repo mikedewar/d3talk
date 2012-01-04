@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+    <head>
+	    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+        <link type="text/css" rel="stylesheet" href="style.css">
+        <title></title>
+    </head>
+    <body>
+        <div id="body">
+            <div id="header">
+                <script>
+d3.json(
+    "localhost:8000/data/num_topics.json", 
+    function(data){
+        d3.select("#header")
+            .append("ul")
+            .selectAll("li")
+            .data(data)
+            .enter()
+            .append("li")
+            .text(
+				function(d){
+					return d.count + " people specify " + d.num_topics + " topics";
+				}
+			);
+    }
+)
+</script>
+        </div>
+        </div>
+    </body>
+</html>

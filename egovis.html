@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+        <script type="text/javascript" src="http://mbostock.github.com/d3/d3.layout.js"></script>
+        <script type="text/javascript" src="http://mbostock.github.com/d3/d3.geom.js"></script> 
+        <title>egovis</title>
+    </head>
+    <body>
+        <div id="body">
+            <div id="chart">
+            </div>
+            <script>
+            
+                var w = 1024,
+                    h = 768,
+                    fill = d3.scale.category20();
+            
+                vis = d3.select("#chart")
+                    .append("svg")
+                
+                d3.json(
+                    'http://localhost:8000/data/hackr_event.json', 
+                    function(json){
+                    
+                    
+                    var force = d3.layout.force()
+                        .charge(-200)
+                        .nodes(json.nodes)
+                        .size([w, h])
+                        .start();
+                    
+                    var node = vis.selectAll("g")
+                        .data(json.nodes)
+                        .enter().append("g")  
+                        .attr("id", function(d){ return d.name;})    
+                        .attr("class", "node")
+                        .attr("x", function(d) { return d.x; })
+                        .attr("y", function(d) { return d.y; })
+                        .call(force.drag);
+                    
+                    node.append('svg:image')
+                        .attr('x', 0)
+                        .attr('y', 0)
+                        .attr('width', 100)
+                        .attr('height', 100)
+                        .attr('xlink:href', function(d){return d.photo_url})
+                    
+                    /*
+                    node.append("svg:text")
+                        .text(function(d){return d.name})
+                    */
+                    force.on("tick", function() {
+                        node.attr(
+                            "transform", 
+                            function(d) { return "translate(" + d.x + "," + d.y + ")"; }
+                        );
+                    });
+                    
+                    d3.select("#chart").on("click", function() {
+                        console.log('click')
+                        json.nodes.forEach(function(o, i) {
+                            o.x += (Math.random() - .5) * 50;
+                            o.y += (Math.random() - .5) * 50;
+                        });
+                        force.resume();
+                    });
+                    
+                })
+                
+            </script>
+        </div>
+    </body>
+</html>
