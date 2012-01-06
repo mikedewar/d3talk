@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
     <head>
-	    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+        <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
         <link type="text/css" rel="stylesheet" href="style.css">
         <title></title>
     </head>
@@ -10,7 +10,7 @@
             <div id="header">
                 <script>
 d3.json(
-    "localhost:8000/data/num_topics.json", 
+    "http://localhost:8000/data/num_topics.json", 
     function(data){
         d3.select("#header")
             .append("ul")
@@ -19,10 +19,23 @@ d3.json(
             .enter()
             .append("li")
             .text(
-				function(d){
-					return d.count + " people specify " + d.num_topics + " topics";
-				}
-			);
+                function(d){
+                    msg = d.count
+                    if (d.count == 1) {
+                        msg += " person specifies ";
+                    } else {
+                        msg += " people specify "
+                    }
+                    msg += d.num_topics
+                    if (d.num_topics == 1){
+                        msg += " topic";
+                    } else {
+                        msg += " topics";
+                    }
+                    return msg;
+                }
+            )
+        .style("font-size","0.6em")
     }
 )
 </script>

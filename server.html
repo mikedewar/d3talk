@@ -7,8 +7,15 @@
     <body>
         <div id="body">
             <div id="header">
-				<h1>now serve your JSON</h1>
-				<div style="padding-top:3em;">python -m SimpleHTTPServer 8000</div>
+				<h1>now serve your JSON:</h1>
+				<div>python -m SimpleHTTPServer 8000</div>
+				<h1>so that d3 can make an http get request:</h1>
+				<pre>
+d3.json(
+    "http://localhost:8000/data.json", 
+    callback_function
+)
+</pre>
             </div>
         </div>
     </body>

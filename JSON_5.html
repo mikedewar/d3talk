@@ -1,31 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
   <head>
-    <link type="text/css" rel="stylesheet" href="style.css">
-    <title></title>
+  <link type="text/css" rel="stylesheet" href="style.css">
+  <title></title>
   </head>
   <body>
-    <div id="body">
-      <div id="header">
-        <pre>
+  <div id="body">
+    <div id="header">
+    <pre>
 d3.json(
-  "localhost:8000/data/num_topics.json", 
+  "http://localhost:8000/data/num_topics.json", 
   function(num_topics){
-    d3.select("body")
-      .append("ul")
-      .selectAll("li")
-      .data(num_topics)
-      .enter()
-      .append("li")
-      .text(
-        function(d){
-          return d.count + " people specify " + d.num_topics + " topics";
-        }
-      );
+  d3.select("body")
+    .append("ul")
+    .selectAll("li")
+    .data(num_topics)
+    .enter()
+    .append("li")
+    .text(
+      function(d){
+        msg = d.count;
+        msg += " people specify ";
+        msg += d.num_topics;
+        msg += " topics";
+        return msg;
+      }
+    );
   }
-)
-      </pre>
-      </div>
+);
+    </pre>
     </div>
+  </div>
   </body>
 </html>

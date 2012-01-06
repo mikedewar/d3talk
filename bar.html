@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+    <head>
+        <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+        <link type="text/css" rel="stylesheet" href="style.css">
+        <title></title>
+    </head>
+    <body>
+        <div id="body">
+            <div id="header">
+                <script>
+d3.json(
+    "http://localhost:8000/data/num_topics.json", 
+    function(data){
+        d3.select("#body")
+            .append("svg")
+            .selectAll("rect")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("x", 300)
+            .attr("y", function(d,i) {return i*23;})
+            .attr("width", function(d, i) {return 4*d.num_topics })
+            .attr("height", 20)
+            .style("fill","CornflowerBlue")
+    }
+)
+                </script>
+            </div>
+        </div>
+    </body>
+</html>
