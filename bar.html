@@ -7,26 +7,57 @@
     </head>
     <body>
         <div id="body">
-            <div id="header">
-                <script>
+			<div id="list">
+            </div>
+			<div id="bars">
+			</div>
+            <script>
 d3.json(
     "http://localhost:8000/data/num_topics.json", 
     function(data){
-        d3.select("#body")
+        d3.select("#bars")
             .append("svg")
             .selectAll("rect")
             .data(data)
             .enter()
             .append("rect")
-            .attr("x", 300)
-            .attr("y", function(d,i) {return i*23;})
-            .attr("width", function(d, i) {return 4*d.num_topics })
+            .attr("y", function(d,i) {return i*24;})
+            .attr("width", function(d, i) {return 11*d.count })
             .attr("height", 20)
             .style("fill","CornflowerBlue")
     }
 )
+
+d3.json(
+    "http://localhost:8000/data/num_topics.json", 
+    function(data){
+        d3.select("#list")
+            .append("ul")
+            .selectAll("li")
+            .data(data)
+            .enter()
+            .append("li")
+            .text(
+                function(d){
+                    var msg = d.count
+                    if (d.count == 1) {
+                        msg += " person specifies ";
+                    } else {
+                        msg += " people specify "
+                    }
+                    msg += d.num_topics
+                    if (d.num_topics == 1){
+                        msg += " topic";
+                    } else {
+                        msg += " topics";
+                    }
+                    return msg;
+                }
+            )
+        .style("font-size","0.6em")
+    }
+)
                 </script>
-            </div>
         </div>
     </body>
 </html>

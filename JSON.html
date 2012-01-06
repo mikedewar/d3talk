@@ -2,23 +2,27 @@
 <html>
     <head>
         <link type="text/css" rel="stylesheet" href="style.css">
-        <title></title>
+	    <link type="text/css" rel="stylesheet" href="prettify.css">
+	    <script type="text/javascript" src="prettify.js"></script>
+	    <link type="text/css" rel="stylesheet" href="style.css">
+	    <title></title>
     </head>
-    <body>
+    <body onload="prettyPrint()">
+
         <div id="body">
             <div id="header">
                 <h1>all of JSON</h1>
-                <pre>
+                <pre class="prettyprint">
 {
     "key": "value",
-    "id": 1234,
+    "d3_rocks": true,
     "topics": [
         "statistics", 
         "machine learning", 
     ],
     "location":{
-        "lat": 123,
-        "lon": 456,
+        "lat": 123.456,
+        "lon": null,
     }
 }
                 </pre>

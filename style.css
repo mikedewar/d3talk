@@ -22,11 +22,6 @@ svg {
   font: 14px "Helvetica Neue";
 }
 
-svg {
-  width: 1280px;
-  height: 800px;
-}
-
 #chart, #header {
   position: absolute;
   top: 0;
@@ -54,10 +49,6 @@ rect {
   pointer-events: all;
 }
 
-pre {
-  font-size: 30px;
-}
-
 line {
   stroke: #000;
   stroke-width: 1.5px;
@@ -103,6 +94,11 @@ rect {
 
 pre {
   font-size: 30px;
+  margin-left:4em;
+}
+
+pre.prettyprint {
+    border:0px;
 }
 
 line {
@@ -128,4 +124,18 @@ line {
 
 .class, .special {
   color: #1181B8;
+}
+
+#list {
+    font: 300 36px "Inconsolata";
+	float:left;
+	width:10em;
+	margin-left:2em;
+}
+
+#bars{
+	margin-top: 2.8em;
+	margin-left:4em;
+	width:5em;
+	float:left;
 }

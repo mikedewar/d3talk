@@ -20,7 +20,7 @@ d3.json(
             .append("li")
             .text(
                 function(d){
-                    msg = d.count
+                    var msg = d.count
                     if (d.count == 1) {
                         msg += " person specifies ";
                     } else {
