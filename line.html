@@ -13,19 +13,6 @@
             <div style="height:300px; width:750px; margin-left:auto; margin-right:auto; margin-top:1em" id="chart">
             </div>
             <pre style="font-size:0.7em" class="prettyprint">
-xAxis = d3.svg.axis().scale(time_scale)
-yAxis = d3.svg.axis().scale(value_scale).orient("left")
-
-svg.append("svg:g")
-    .attr("class", "xaxis")
-    .attr("transform","translate(0,280)")
-    .call(xAxis)
-                
-svg.append("svg:g")
-    .attr("class", "yaxis")
-    .attr("transform", "translate(30,0)")
-    .call(yAxis)
-
             </pre>
         </div>
     <script>
@@ -61,6 +48,15 @@ svg.append("svg:g")
                     .style("fill","red")
                     .style("fill-opacity", 0.8)
                     .style("stroke", "black");
+                
+                line = d3.svg.line()
+                    .x(function(d){return time_scale( new Date(d.time));})
+                    .y(function(d){return value_scale(d.yes_rsvp_count);})
+                
+                svg.append("svg:path")
+                      .attr("class", "line")
+                      .attr("clip-path", "url(#clip)")
+                      .attr("d", line(data));
                 
                 svg.append("svg:g")
                     .attr("class", "xaxis")

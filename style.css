@@ -2,6 +2,7 @@ body {
   overflow: hidden;
   margin: 0;
   font: 36px "Tahoma";  
+  padding-left:1em;
 }
 
 svg {
@@ -120,6 +121,11 @@ line {
 }
 
 .yaxis{
+    fill:none;
+    stroke:gray;
+}
+
+path{
     fill:none;
     stroke:gray;
 }
