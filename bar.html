@@ -21,9 +21,9 @@ d3.json(
             .data(data)
             .enter()
             .append("rect")
-            .attr("y", function(d,i) {return i*24;})
+            .attr("y", function(d,i) {return i*27;})
             .attr("width", function(d, i) {return 11*d.count })
-            .attr("height", 20)
+            .attr("height", 24)
             .style("fill","CornflowerBlue")
     }
 )

@@ -6,13 +6,13 @@
         <title></title>
     </head>
     <body>
-        <div id="body">
+        <div style="padding-left:1em" id="body">
             <div id="header">
                 <script>
 d3.json(
     "http://localhost:8000/data/num_topics.json", 
     function(data){
-        d3.select("#header")
+        d3.select("#body")
             .append("ul")
             .selectAll("li")
             .data(data)
@@ -35,7 +35,7 @@ d3.json(
                     return msg;
                 }
             )
-        .style("font-size","0.6em")
+        .style("font-size","1.5em")
     }
 )
 </script>

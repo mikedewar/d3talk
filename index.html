@@ -75,20 +75,28 @@ iframe {
     <script type="text/javascript">
 
 var slides = [
-	"title.html",
-	"intro.html",
-	"egovis.html", //data
-	"structure.html",
-	"JSON.html",
-	"JSON_1.html",
-	"JSON_2.html",
-	"JSON_3.html",
-	"jsonlint.html",
-	"server.html",
-	"JSON_4.html",
-	"list.html",
-	"bar.html",
-	"list_code.html",
+    "title.html",
+    "intro.html",
+    "egovis.html", //data
+    "structure.html",
+    "JSON.html",
+    "JSON_1.html",
+    "json_golden_rule.html",
+    "JSON_2.html",
+    "JSON_3.html",
+    "jsonlint.html",
+    "server.html",
+    "JSON_4.html",
+    "list.html",
+    "list_code.html",
+    "bar.html",
+    "bar_code.html",
+    "select.html",
+    "scale.html",
+    "axes.html",
+    "line.html",
+    "layout.html",
+    "summary.html"
 ];
 
 var previous = d3.select("#previous"),
@@ -105,7 +113,7 @@ step(0);
 d3.selectAll("iframe").on("load", function() {
   this.contentWindow.focus();
   d3.select(this.contentWindow).on("keydown", function() {
-	  console.log(d3.event.keyCode)
+      console.log(d3.event.keyCode)
     switch (d3.event.keyCode) {
       case 39: // right arrow
       case 32: // space
