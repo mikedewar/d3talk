@@ -13,13 +13,17 @@
             <div style="height:300px; width:750px; margin-left:auto; margin-right:auto; margin-top:1em" id="chart">
             </div>
             <pre style="font-size:0.7em" class="prettyprint">
-line = d3.svg.line()
-    .x(function(d){return time_scale( new Date(d.time));})
-    .y(function(d){return value_scale(d.yes_rsvp_count);})
-                
-svg.append("svg:path")
-      .attr("class", "line")
-      .attr("d", line(data));
+d3.selectAll("circle")
+    .on('mouseover', function(d){
+        svg.append('text')
+        .attr("x", time_scale( new Date(d.time)) + 5)
+        .attr("y", value_scale(d.yes_rsvp_count) + 5)
+        .text(d.name)
+        .attr('class','tip')
+    })
+    .on('mouseout', function(d){
+        d3.selectAll(".tip").remove()
+    })
             </pre>
         </div>
     <script>
@@ -43,6 +47,25 @@ svg.append("svg:path")
                 
                 svg = d3.select("#chart")
                     .append("svg");
+                
+                line = d3.svg.line()
+                    .x(function(d){return time_scale( new Date(d.time));})
+                    .y(function(d){return value_scale(d.yes_rsvp_count);})
+                
+                svg.append("svg:path")
+                      .attr("class", "line")
+                      .attr("d", line(data));
+                     
+                  svg.append("svg:g")
+                      .attr("class", "xaxis")
+                      .attr("transform","translate(0,280)")
+                      .call(xAxis)
+                
+                  svg.append("svg:g")
+                      .attr("class", "yaxis")
+                      .attr("transform", "translate(30,0)")
+                      .call(yAxis);
+                
                     
                 svg.selectAll("circle")
                     .data(data)
@@ -56,23 +79,18 @@ svg.append("svg:path")
                     .style("fill-opacity", 0.8)
                     .style("stroke", "black");
                 
-                line = d3.svg.line()
-                    .x(function(d){return time_scale( new Date(d.time));})
-                    .y(function(d){return value_scale(d.yes_rsvp_count);})
-                
-                svg.append("svg:path")
-                      .attr("class", "line")
-                      .attr("d", line(data));
-                
-                svg.append("svg:g")
-                    .attr("class", "xaxis")
-                    .attr("transform","translate(0,280)")
-                    .call(xAxis)
-                
-                svg.append("svg:g")
-                    .attr("class", "yaxis")
-                    .attr("transform", "translate(30,0)")
-                    .call(yAxis)
+                d3.selectAll("circle")
+                    .on('mouseover', function(d){
+                        svg.append('text')
+                        .attr("x", time_scale( new Date(d.time)) + 5)
+                        .attr("y", value_scale(d.yes_rsvp_count) + 5)
+                        .text(d.name)
+                        .attr('class','tip')
+                        .style("font-size","1.5em")
+                    })
+                    .on('mouseout', function(d){
+                        d3.selectAll(".tip").remove()
+                    })
             }
         )
     </script>

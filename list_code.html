@@ -12,21 +12,21 @@
 d3.json(
   "http://localhost:8000/data/num_topics.json", 
   function(num_topics){
-  d3.select("body")
-    .append("ul")
-    .selectAll("li")
-    .data(num_topics)
-    .enter()
-    .append("li")
-    .text(
-      function(d){
-        var msg = d.count;
-        msg += " people specify ";
-        msg += d.num_topics;
-        msg += " topics";
-        return msg;
-      }
-    );
+      d3.select("body")
+        .append("ul")
+        .selectAll("li")
+        .data(num_topics)
+        .enter()
+        .append("li")
+        .text(
+          function(d){
+            var msg = d.count;
+            msg += " people specify ";
+            msg += d.num_topics;
+            msg += " topics";
+            return msg;
+          }
+        );
   }
 );
     </pre>

@@ -17,14 +17,14 @@ time_scale = d3.time.scale()
         new Date(d3.min(data, function(d){return d.time})),
         new Date(d3.max(data, function(d){return d.time}))
     ])
-    .range([20,730])
+    .range([30,730])
                 
 value_scale = d3.scale.linear()
     .domain([
         0, 
         d3.max(data, function(d){return d.yes_rsvp_count;})
     ])
-    .range([350, 0])
+    .range([280, 20])
             </pre>
         </div>
     <script>

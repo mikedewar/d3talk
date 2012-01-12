@@ -20,14 +20,17 @@
             <div style="height:300px; width:750px; margin-left:auto; margin-right:auto; margin-top:1em" id="graph">
             </div>
             <pre style="font-size:0.7em" class="prettyprint">
-var force = d3.layout.force()
-    .charge(-50).nodes(json.nodes).size([750, 300]).start();
-    
-var node = vis.selectAll("g").data(json.nodes).enter()
-    .append("g")
-    .attr("x", function(d) { return d.x; })
-    .attr("y", function(d) { return d.y; })
-    .call(force.drag);
+
+node.append('svg:image')
+    .attr('x', 0).attr('y', 0)
+    .attr('width', 40).attr('height', 40)
+    .attr('xlink:href', function(d){return d.photo_url})
+
+force.on("tick", function() {
+    node.attr("transform", 
+    function(d){return "translate(" + d.x + "," + d.y + ")";});
+});
+
 
             </pre>
             <script>
