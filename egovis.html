@@ -13,8 +13,8 @@
             </div>
             <script>
             
-                var w = 1024,
-                    h = 768,
+                var w = 900,
+                    h = 650,
                     fill = d3.scale.category20();
             
                 vis = d3.select("#graph")
@@ -58,11 +58,11 @@
                         );
                     });
                     
-                    d3.select("#chart").on("click", function() {
+                    d3.select("#graph").on("click", function() {
                         console.log('click')
                         json.nodes.forEach(function(o, i) {
-                            o.x += (Math.random() - .5) * 50;
-                            o.y += (Math.random() - .5) * 50;
+                            o.x += (Math.random() - .5) * 300;
+                            o.y += (Math.random() - .5) * 300;
                         });
                         force.resume();
                     });
