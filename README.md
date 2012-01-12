@@ -6,4 +6,4 @@ In order to actually run through talk, clone this repository and run this comman
 
 `python -m SimpleHTTPServer 8000`
 
-Then point your browser at http://localhost:8000.
+Then point your browser at http://localhost:8000
